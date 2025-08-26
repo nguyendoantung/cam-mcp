@@ -6,7 +6,7 @@ from openai import OpenAI
 
 load_dotenv()
 
-BASE_URL = "https://mkp-api.fptcloud.com"
+BASE_URL = "https://mkp-api.fptcloud.com/v1/responses"
 API_KEY = os.getenv("AI_AGENT_TOKEN", "")
 MODEL_NAME = "Qwen3-32B"
 
@@ -32,7 +32,7 @@ MODEL_NAME = "Qwen3-32B"
 
 # client = OpenAI()
 client = OpenAI(api_key=API_KEY, base_url=BASE_URL)
-# client = OpenAI(api_key=API_KEY) 
+# client = OpenAI(api_key=API_KEY)
 
 resp = client.responses.create(
     model=MODEL_NAME,
@@ -41,8 +41,9 @@ resp = client.responses.create(
             "type": "mcp",
             "server_label": "weather",
             "server_description": "A MCP Server for weather info",
-            "server_url": "http://127.0.0.1:8000",
+            "server_url": "https://e5ecdd70aeaf.ngrok-free.app",
             "require_approval": "never",
+            "allowed_tools": ["roll"],
         },
     ],
     input="What's the weather like in Ha Noi?",

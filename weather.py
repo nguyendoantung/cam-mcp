@@ -7,7 +7,14 @@ from mcp.server.fastmcp import FastMCP
 
 # Initialize FastMCP server
 # mcp = FastMCP("weather")
-mcp = FastMCP("my-http-mcp-server", stateless_http=True, host="127.0.0.1", port=8000)
+mcp = FastMCP(
+    "my-http-mcp-server",
+    stateless_http=True,
+    host="127.0.0.1",
+    port=8000,
+    log_level="DEBUG",
+    debug=True,
+)
 
 # Constants
 NWS_API_BASE = "https://api.weather.gov"
